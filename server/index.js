@@ -82,7 +82,7 @@ app.post('/login', (req, res) => {
                     const token = jwt.sign({email: user.email, username: user.username},
                         "jwt-secret-key", {expiresIn: '1d'})
                   let options={
-                expires:new Date(Date.now()+15*24*60*60*1000);
+                expires:new Date(Date.now()+15*24*60*60*1000),
                 httpOnly:true,
                 secure:false,
                 sameSite:"none"
