@@ -81,7 +81,13 @@ app.post('/login', (req, res) => {
                 if(response) {
                     const token = jwt.sign({email: user.email, username: user.username},
                         "jwt-secret-key", {expiresIn: '1d'})
-                    res.cookie('token', token)
+                  let options={
+                expires:new Date(Date.now()+15*24*60*60*1000);
+                httpOnly:true,
+                secure:false,
+                sameSite:"none"
+          }
+                    res.cookie('token', token,options)
                     return res.json("Success")
                 } else {
                     return res.json("Password is incorrect");
