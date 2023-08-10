@@ -84,7 +84,7 @@ app.post('/login', (req, res) => {
                   let options={
                 expires:new Date(Date.now()+15*24*60*60*1000),
                 httpOnly:true,
-                secure:false,
+                secure:true,
                 sameSite:"none"
           }
                     res.cookie('token', token,options)
